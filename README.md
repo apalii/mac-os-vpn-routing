@@ -40,7 +40,7 @@ list_ips_us_east_1
 len(list_ips_us_east_1)
 
 # And here we filter CIDRs which start with '54.' '4.' and '3.' for my individual needs.
-# Feel free to skeep or change this step
+# Feel free to skip or change this step
 needed_list = [i for i in list_ips_us_east_1 if i.startswith('54') or i.startswith('4.') or i.startswith('3.')]
 
 # Let's create all the needed route commands
@@ -66,4 +66,17 @@ That's it. Now your traffic to AWS us-east-1 will be routed over VPN, respective
 In order to check your routing table execute the following command:
 ```bash
 netstat -nr 
+```
+
+Alternatively you can create alias in your ~/.profile for particular host
+```
+alias host-route-add='sudo /sbin/route add -host 192.168.1.1 -interface ppp0'
+```
+Or particular network
+```
+alias net-route-add='sudo /sbin/route add -net 192.168.1.1/27 -interface ppp0'
+```
+To remove the needed route:
+```
+sudo /sbin/route delete 192.168.1.1/27 -interface ppp0
 ```
