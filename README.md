@@ -9,15 +9,17 @@ and disable `Send all traffic over VPN`
 Also, I assume that you are familiar with Python programming language which will be used further. 
 Let's install an appropriate Python version from https://www.python.org/downloads/
 At this moment 3.7.3 is the latest version.
-```$ python3 -V
+```bash
+$ python3 -V
 Python 3.7.3
 ```
 
 
 Create a virtual environment:
-```python3 -m venv ipython
-   cd ipython/
-   ```
+```bash
+python3 -m venv ipython
+cd ipython/
+```
 Activate it and install all the needed packeges :
    ```
    . bin/activate
@@ -47,7 +49,7 @@ for i in needed_list:
 ```
 
 Let's cteate ip-up file and put all the route commands in it:
-```
+```bash
 sudo nano /etc/ppp/ip-up
 ```
 File structure:
@@ -57,11 +59,11 @@ File structure:
 ...
 ```
 Set permissions:
-```
+```bash
 sudo chmod +x /etc/ppp/ip-up
 ```
 That's it. Now your traffic to AWS us-east-1 will be routed over VPN, respectively all other traffic over standart connection.
 In order to check your routing table execute the following command:
-```
+```bash
 netstat -nr 
 ```
